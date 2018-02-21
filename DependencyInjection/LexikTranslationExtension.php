@@ -38,7 +38,11 @@ class LexikTranslationExtension extends Extension
         $loader->load('services.xml');
 
         // set parameters
-        sort($config['managed_locales']);
+        $sortManagedLocales = isset($config['sort_managed_locales']) && is_bool($config['sort_managed_locales']) ? $config['sort_managed_locales'] : true;
+        if ($sortManagedLocales) {
+            sort($config['managed_locales']);
+        }
+
         $container->setParameter('lexik_translation.managed_locales', $config['managed_locales']);
         $container->setParameter('lexik_translation.fallback_locale', $config['fallback_locale']);
         $container->setParameter('lexik_translation.storage', $config['storage']);
