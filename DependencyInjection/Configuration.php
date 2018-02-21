@@ -56,6 +56,10 @@ class Configuration implements ConfigurationInterface
                     ->prototype('scalar')->end()
                 ->end()
 
+                ->booleanNode('sort_managed_locales')
+                    ->defaultValue(true)
+                ->end()
+
                 ->scalarNode('grid_input_type')
                     ->cannotBeEmpty()
                     ->defaultValue('text')
